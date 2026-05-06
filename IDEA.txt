@@ -1,0 +1,15 @@
+--- NUMBER GAMBLING ---
+Numbers have more or less value depending on their qualities(between 1 - 999):
+-if it has on number => SUPER rare
+-if it has two number => Rare but not as much
+-if its all the same number (33, 555, 111)
+-if its divisable (by 2, 3, 4, 5, 10 ... will have to gauge)
+-if its divisable by 100 (200, 400 ... again, will have to gauge)
+-if its recognisable (21, 67, 69, 666, 777, 911)
+
+All of the qualities will stack to give it a STAR rating ON TOP of the rarity
+ie: Legendary 4 stars, common 5 stars, rare 1 stars
+
+List of rarities [Legendary, Epic, Rare, Uncommon, Common] https://infinite-realm.fandom.com/wiki/Rarities
+all with a one to 5 star so in total an Int 25 rating
+(might be reworked)
