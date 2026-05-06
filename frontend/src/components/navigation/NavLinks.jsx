@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/auth-context";
 
 import "../../Main.css";
 
-export const NavLink = (props) => {
+const NavLink = (props) => {
   const auth = useContext(AuthContext);
   return (
     <ul className="nav-links">
@@ -34,3 +34,5 @@ export const NavLink = (props) => {
     </ul>
   );
 };
+
+export default NavLink;
