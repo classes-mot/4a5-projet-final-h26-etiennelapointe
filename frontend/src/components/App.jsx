@@ -22,13 +22,13 @@ const routerLogin = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      {index: true, element: <Market />},
-      {path: "/signup", element: <Navigate to="/market" replace />},
-      {path: "/login", element: <Navigate to="/market" replace />},
-      {path: "/market", element: <Market />},
-      {path: "/collection/:userId", element: <UserCollection />},
-      {path: "/pull", element: <Pull />},
-      {path: "/users", element: <Users />},
+      { index: true, element: <Market /> },
+      { path: "/signup", element: <Navigate to="/market" replace /> },
+      { path: "/login", element: <Navigate to="/market" replace /> },
+      { path: "/market", element: <Market /> },
+      { path: "/collection/:userId", element: <UserCollection /> },
+      { path: "/pull", element: <Pull /> },
+      { path: "/users", element: <Users /> },
     ],
   },
 ]);
@@ -39,12 +39,62 @@ const routerLogout = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      {index: true, element: <Market />},
-      {path: "/signup", element: <Signup />},
-      {path: "/login", element: <Login />},
-      {path: "/market", element: <Market />},
-      {path: "/users", element: <Users />},
+      { index: true, element: <Market /> },
+      { path: "/signup", element: <Signup /> },
+      { path: "/login", element: <Login /> },
+      { path: "/market", element: <Market /> },
+      { path: "/users", element: <Users /> },
     ],
   },
 ]);
 
+const App = () => {
+  const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(false);
+
+  const login = useCallback((uid, token) => {
+    setToken(token);
+    setUserId(uid);
+  }, []);
+
+  const logout = useCallback(() => {
+    setToken(null);
+    setUserId(null);
+  }, []);
+
+  if (token) {
+    return (
+      <AuthContext.Provider
+        value={{
+          isLoggedIn: !!token,
+          token: token,
+          userId: userId,
+          login: login,
+          logout: logout,
+        }}
+      >
+        <Suspense fallback={<div>Loading...</div>}>
+          <RouterProvider router={routerLogin} />
+        </Suspense>
+      </AuthContext.Provider>
+    );
+  } else {
+    return (
+      <AuthContext.Provider
+        value={{
+          isLoggedIn: !!token,
+          token: token,
+          userId: userId,
+          login: login,
+          logout: logout,
+        }}
+      >
+        <Suspense fallback={<div>Loading...</div>}>
+          <RouterProvider router={routerLogout} />
+        </Suspense>
+      </AuthContext.Provider>
+    );
+  }
+};
+
+export default App;

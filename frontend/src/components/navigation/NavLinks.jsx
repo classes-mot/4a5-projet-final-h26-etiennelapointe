@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
-
+import Avatar from "../UIElements/Avatar";
 import "../../Main.css";
 
-const NavLink = (props) => {
+
+const NavLinks = (props) => {
   const auth = useContext(AuthContext);
   return (
     <ul className="nav-links">
@@ -24,10 +25,19 @@ const NavLink = (props) => {
       <li>
         <NavLink to="/users">Users</NavLink>
       </li>
-      {!auth.isLoggedIn && (
-        <>
+      {auth.isLoggedIn ? (
           <li>
             <NavLink to="/register">Login</NavLink>
+          </li>
+      ) : (
+        <>
+          <li>
+            <p>{auth.money}$</p>
+          </li>
+          <li>
+            <NavLink to={`/${auth.userId}/settings`}>
+              <Avatar image={auth.icon} color={auth.color} />
+            </NavLink>
           </li>
         </>
       )}

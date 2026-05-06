@@ -17,7 +17,7 @@ const UserItem = (props) => {
     <li className="useritem">
       <Card className="useritem-content">
         <div className="useritem-image">
-          <Avatar image={props.image} alt="Ø" />
+          <Avatar image={props.image} color={props.color} alt="Ø" />
         </div>
         <div className="useritem-info">
           <h1>{props.name}</h1>
