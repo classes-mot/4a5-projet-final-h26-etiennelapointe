@@ -20,7 +20,7 @@ const UserCollection = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:5000/api/numbers/user/${userId}`,
+          `${import.meta.env.VITE_BACKEND_URL}numbers/user/${userId}`,
           {
             method: "GET",
             headers: {
@@ -48,7 +48,7 @@ const UserCollection = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/numbers/${numberId}`,
+        `${import.meta.env.VITE_BACKEND_URL}numbers/${numberId}`,
         {
           method: "DELETE",
           headers: {

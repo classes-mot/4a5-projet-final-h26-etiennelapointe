@@ -29,7 +29,7 @@ export default function Login() {
     event.preventDefault();
     try {
       const response = await sendRequest(
-        "http://localhost:5000/api/users/login",
+        `${import.meta.env.VITE_BACKEND_URL}users/login`,
         "POST",
         JSON.stringify(entredValues),
         {

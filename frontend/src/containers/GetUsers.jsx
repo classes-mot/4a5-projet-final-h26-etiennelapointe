@@ -13,7 +13,7 @@ const Users = () => {
         const fetchUsers = async () => {
             try {
                 setIsLoading(true);
-                const response = await fetch("http://localhost:5000/api/users", {
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}users`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

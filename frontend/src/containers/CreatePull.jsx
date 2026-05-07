@@ -23,7 +23,7 @@ const Pull = () => {
     };
 
     await sendRequest(
-      "http://localhost:5000/api/numbers",
+      `${import.meta.env.VITE_BACKEND_URL}/numbers`,
       "POST",
       JSON.stringify(newNumber),
       {
