@@ -4,17 +4,17 @@ import {
   Navigate,
 } from "react-router-dom";
 import React, { useState, useCallback, Suspense } from "react";
-import Users from "../Containers/Users";
-import RootLayout from "../Containers/Roots";
-import ErrorPage from "../Containers/ErrorPage";
+import Users from "../containers/GetUsers";
+import RootLayout from "../containers/Roots";
+import ErrorPage from "../containers/ErrorPage";
 import { AuthContext } from "../context/auth-context";
 
-const Market = React.lazy(() => import("../Containers/Market"));
-const UserCollection = React.lazy(() => import("../Containers/UserCollection"));
-const Pull = React.lazy(() => import("../Containers/Pull"));
-const Users = React.lazy(() => import("../Containers/Users"));
-const Login = React.lazy(() => import("../Containers/Login"));
-const Signup = React.lazy(() => import("../Containers/Signup"));
+const GetMarket = React.lazy(() => import("../containers/GetMarket"));
+const GetUserCollection = React.lazy(() => import("../containers/GetUserCollection"));
+const CreatePull = React.lazy(() => import("../containers/CreatePull"));
+const GetUsers = React.lazy(() => import("../containers/GetUsers"));
+const Login = React.lazy(() => import("../containers/GetLogin"));
+const Signup = React.lazy(() => import("../containers/GetSignup"));
 
 const routerLogin = createBrowserRouter([
   {
@@ -22,13 +22,13 @@ const routerLogin = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Market /> },
+      { index: true, element: <GetMarket /> },
       { path: "/signup", element: <Navigate to="/market" replace /> },
       { path: "/login", element: <Navigate to="/market" replace /> },
-      { path: "/market", element: <Market /> },
-      { path: "/collection/:userId", element: <UserCollection /> },
-      { path: "/pull", element: <Pull /> },
-      { path: "/users", element: <Users /> },
+      { path: "/market", element: <GetMarket /> },
+      { path: "/collection/:userId", element: <GetUserCollection /> },
+      { path: "/pull", element: <CreatePull /> },
+      { path: "/users", element: <GetUsers /> },
     ],
   },
 ]);
@@ -39,11 +39,11 @@ const routerLogout = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Market /> },
+      { index: true, element: <GetMarket /> },
       { path: "/signup", element: <Signup /> },
       { path: "/login", element: <Login /> },
-      { path: "/market", element: <Market /> },
-      { path: "/users", element: <Users /> },
+      { path: "/market", element: <GetMarket /> },
+      { path: "/users", element: <GetUsers /> },
     ],
   },
 ]);

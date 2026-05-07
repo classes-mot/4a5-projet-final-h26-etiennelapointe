@@ -1,6 +1,7 @@
-import "../../Main.css";
-
+import React from "react";
 import { createPortal } from "react-dom";
+
+import "../../Main.css";
 
 const SideDrawer = (props) => {
   const content = (

@@ -1,18 +1,20 @@
 import "../../Main.css";
 
 import { useState, useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { useHttpClient } from "../../hooks/http-hook";
+import { useHttpClient } from "../../hook/http-hook";
 import { AuthContext } from "../../context/auth-context";
 import ErrorMsg from "../UIElements/ErrorMsg";
 import Spinner from "../UIElements/Spinner";
 
 export default function Login() {
+  const { t } = useTranslation();
   const auth = useContext(AuthContext);
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [entredValues, setEntredValues] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -48,10 +50,10 @@ export default function Login() {
       </div>
       <form onSubmit={authSubmitHandler}>
         <div>
-          <h1 className="register-title">Login</h1>
+          <h1 className="register-title">{t("loginTitle")}</h1>
           <div className="register-input-container">
             <div className="register-input">
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username">{t("username")}</label>
               <input
                 id="username"
                 type="username"
@@ -63,7 +65,7 @@ export default function Login() {
               />
             </div>
             <div className="register-input">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">{t("password")}</label>
               <input
                 id="password"
                 type="password"
@@ -76,9 +78,9 @@ export default function Login() {
             </div>
             <div className="register-btn-container">
               <Link to="/signup">
-                <button className="register-btn-signup">Sign Up</button>
+                <button className="register-btn-signup">{t("signupButton")}</button>
               </Link>
-              <button className="register-btn-login">Login</button>
+              <button className="register-btn-login">{t("loginButton")}</button>
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import React from "react";
 import Card from "../UIElements/Card";
 import MarketItem from "../marketitem/MarketItem";
 import "../../Main.css";
@@ -7,9 +8,7 @@ const MarketList = (props) => {
     return (
       <div className="marketlist center">
         <Card>
-          <h1>
-            Let`s go <a href="/pull">PULL</a> your first market item!
-          </h1>
+          <p>An empty market ...</p>
         </Card>
       </div>
     );
@@ -30,3 +29,5 @@ const MarketList = (props) => {
     </ul>
   );
 };
+
+export default MarketList;

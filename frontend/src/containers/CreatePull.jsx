@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/auth-context";
-import { useHttpClient } from "../hooks/http-hook";
-import { ErrorMsg } from "../components/UIElements/ErrorMsg";
-import { Spinner } from "../components/UIElements/Spinner";
+import { useHttpClient } from "../hook/http-hook";
+import ErrorMsg from "../components/UIElements/ErrorMsg";
+import Spinner from "../components/UIElements/Spinner";
 
 const Pull = () => {
   const auth = useContext(AuthContext);
@@ -15,11 +15,11 @@ const Pull = () => {
     const data = Object.fromEntries(fd.entries());
 
     const newNumber = {
-        name: data.name,
-        value: data.value,
-        rating: data.rating,
-        isForSale: data.isForSale,
-        ownerId: auth.userId,
+      name: data.name,
+      value: data.value,
+      rating: data.rating,
+      isForSale: data.isForSale,
+      ownerId: auth.userId,
     };
 
     await sendRequest(
@@ -35,7 +35,11 @@ const Pull = () => {
 
   return (
     <form onSubmit={addNumberSubmitHandler}>
-        <div className="pull-zone">
-            <button type="submit" className="pull-zone-btn">PULL</button>
-        </div>
-    </form>);};
+      <div className="pull-zone">
+        <button type="submit" className="pull-zone-btn">PULL</button>
+      </div>
+    </form>
+  );
+};
+
+export default Pull;

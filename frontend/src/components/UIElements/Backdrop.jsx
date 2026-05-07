@@ -1,7 +1,8 @@
-import ReactDOM from "react-dom";
+import React from "react";
+import { createPortal } from "react-dom";
 
 const Backdrop = (props) => {
-  return ReactDOM.createPortal(
+  return createPortal(
     <div className="backdrop" onClick={props.onClick}></div>,
     document.getElementById("backdrop")
   );

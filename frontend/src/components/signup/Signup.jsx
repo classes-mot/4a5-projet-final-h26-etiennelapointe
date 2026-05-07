@@ -1,12 +1,14 @@
 import "../../Main.css";
 
 import { useState, useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { useHttpClient } from "../../hooks/http-hook";
+import { AuthContext } from "../../context/auth-context";
 import ErrorMsg from "../UIElements/ErrorMsg";
 import Spinner from "../UIElements/Spinner";
 
 export default function Signup() {
+  const { t } = useTranslation();
   const auth = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -55,18 +57,18 @@ export default function Signup() {
       </div>
       <form onSubmit={handleSubmit}>
         <div>
-          <h1 className="register-title">Login</h1>
+          <h1 className="register-title">{t("signupTitle")}</h1>
           <div className="register-input-container">
             <div className="register-input">
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username">{t("username")}</label>
               <input id="username" type="username" name="username" />
             </div>
             <div className="register-input">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">{t("password")}</label>
               <input id="password" type="password" name="password" />
             </div>
             <div className="register-input">
-              <label htmlFor="confirm-password">Confirm Password</label>
+              <label htmlFor="confirm-password">{t("confirmPassword")}</label>
               <input
                 id="confirm-password"
                 type="password"
@@ -74,15 +76,15 @@ export default function Signup() {
               />
               {passwordNotEqual && (
                 <div className="register-confirm-error">
-                  <p>Passwords must match</p>
+                  <p>{t("passwordsMustMatch")}</p>
                 </div>
               )}
             </div>
             <div className="register-btn-container">
               <Link to="/login">
-                <button className="register-btn-signup">Login</button>
+                <button className="register-btn-signup">{t("loginButton")}</button>
               </Link>
-              <button className="register-btn-login">Sign Up</button>
+              <button className="register-btn-login">{t("signupButton")}</button>
             </div>
           </div>
         </div>

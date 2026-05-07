@@ -1,5 +1,7 @@
+import React from "react";
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink as RouterNavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { AuthContext } from "../../context/auth-context";
 import Avatar from "../UIElements/Avatar";
 import "../../Main.css";
@@ -7,27 +9,28 @@ import "../../Main.css";
 
 const NavLinks = (props) => {
   const auth = useContext(AuthContext);
+  const { t } = useTranslation();
   return (
     <ul className="nav-links">
       <li>
-        <NavLink to="/market">Market</NavLink>
+        <RouterNavLink to="/market">{t("marketTitle")}</RouterNavLink>
       </li>
       {auth.isLoggedIn && (
         <>
           <li>
-            <NavLink to={`/${auth.userId}/collection`}>My Collection</NavLink>
+            <RouterNavLink to={`/${auth.userId}/collection`}>{t("myCollection")}</RouterNavLink>
           </li>
           <li>
-            <NavLink to="/numbers/add">PULL</NavLink>
+            <RouterNavLink to="/numbers/add">{t("pull")}</RouterNavLink>
           </li>
         </>
       )}
       <li>
-        <NavLink to="/users">Users</NavLink>
+        <RouterNavLink to="/users">{t("users")}</RouterNavLink>
       </li>
       {auth.isLoggedIn ? (
           <li>
-            <NavLink to="/register">Login</NavLink>
+            <RouterNavLink to="/register">{t("loginButton")}</RouterNavLink>
           </li>
       ) : (
         <>
@@ -35,9 +38,9 @@ const NavLinks = (props) => {
             <p>{auth.money}$</p>
           </li>
           <li>
-            <NavLink to={`/${auth.userId}/settings`}>
+            <RouterNavLink to={`/${auth.userId}/settings`}>
               <Avatar image={auth.icon} color={auth.color} />
-            </NavLink>
+            </RouterNavLink>
           </li>
         </>
       )}
@@ -45,4 +48,4 @@ const NavLinks = (props) => {
   );
 };
 
-export default NavLink;
+export default NavLinks;

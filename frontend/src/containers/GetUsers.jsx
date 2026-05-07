@@ -1,7 +1,8 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import UserLists from "../components/userlist/UserList";
-import ErrorMsg from "../UIElements/ErrorMsg";
-import Spinner from "../UIElements/Spinner";
+import ErrorMsg from "../components/UIElements/ErrorMsg";
+import Spinner from "../components/UIElements/Spinner";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
